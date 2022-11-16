@@ -2,7 +2,6 @@ from ytb_function import *
 
 
 
-
 parser = argparse.ArgumentParser()
 parser.add_argument('--input', help='Input JSON file with URLs', required=True)
 parser.add_argument('--output', help='Output JSON file with data', required=True)
@@ -12,10 +11,12 @@ input_parameter = argdict['input']
 output_parameter = argdict['output']
 input_json = fichier_input(input_parameter)
     
-    
+#initialisation de la liste de dictionnaire
 liste_dic =[]
+#url dynamique avec format dans la boucle for
 url_base = 'https://www.youtube.com/watch?v={video_id}'
 
+#boucle for pour parcourir la liste des id des vidéos
 for element in input_json:
         
     dic_video = {}
@@ -43,5 +44,5 @@ for element in input_json:
     except:
         pass 
     
-    
+#write the list of dictionary in a json file
 fichier_output(output_parameter,liste_dic)
